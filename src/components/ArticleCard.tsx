@@ -9,11 +9,23 @@ interface ArticleCardProps {
 }
 
 const ArticleCard = ({ article }: ArticleCardProps) => {
+  // Helper function to determine if a file is a video
+  const isVideoFile = (filename: string) => {
+    const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi'];
+    return videoExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+  };
+
+  // Helper function to determine if a file is an image
+  const isImageFile = (filename: string) => {
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif'];
+    return imageExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+  };
+
   return (
     <Card className="group hover:shadow-lg transition-shadow duration-300">
       <Link to={`/articles/${article.slug}`}>
         <div className="w-full aspect-video rounded-t-lg overflow-hidden">
-          {article.coverVideo ? (
+          {article.coverVideo && isVideoFile(article.coverVideo) ? (
             <video
               className="w-full h-full object-cover"
               autoPlay
@@ -24,7 +36,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
               <source src={article.coverVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-          ) : article.coverImage ? (
+          ) : (article.coverImage && isImageFile(article.coverImage)) ? (
             <img
               src={article.coverImage}
               alt={article.title}
