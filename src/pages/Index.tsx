@@ -6,12 +6,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container-fluid px-4 py-4">
         <div className="text-center space-y-8">
-          <div className="relative max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl">
+          <div className="relative max-w-6xl mx-auto rounded-lg overflow-hidden shadow-xl">
             <div className="absolute inset-0 bg-black/30 z-10"></div>
             <video 
-              className="w-full h-auto"
+              className="w-full h-[70vh] object-cover"
               autoPlay 
               loop 
               muted 
