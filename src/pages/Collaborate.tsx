@@ -1,8 +1,22 @@
 import { Mail, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 
 const Collaborate = () => {
+  const { toast } = useToast();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast({
+      title: "Vision shared!",
+      description: "Thank you for sharing your vision with us. We'll be in touch soon.",
+    });
+    (e.target as HTMLFormElement).reset();
+  };
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -33,6 +47,52 @@ const Collaborate = () => {
                 </li>
               </ul>
             </div>
+
+            <form onSubmit={handleSubmit} className="p-6 border rounded-lg bg-card space-y-4">
+              <h2 className="text-2xl font-semibold mb-4">Share Your Vision</h2>
+              
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-medium">
+                  Name
+                </label>
+                <Input
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium">
+                  Email address
+                </label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="vision" className="text-sm font-medium">
+                  Your Vision
+                </label>
+                <Textarea
+                  id="vision"
+                  name="vision"
+                  required
+                  placeholder="Share your ideas and vision with us..."
+                  className="min-h-[120px]"
+                />
+              </div>
+
+              <Button type="submit" className="w-full">
+                Share your Vision
+              </Button>
+            </form>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="flex items-center gap-2">
