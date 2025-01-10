@@ -29,8 +29,8 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Movie Blog <matthewbarr777@resend.dev>",
-        to: ["matthewbarr777@resend.dev", "matthewbarr777@gmail.com"],
+        from: "matthewbarr777@resend.dev",
+        to: ["matthewbarr777@gmail.com"],
         subject: `New Vision Shared by ${name}`,
         html: `
           <h2>New Vision Shared</h2>
@@ -44,12 +44,14 @@ const handler = async (req: Request): Promise<Response> => {
 
     if (res.ok) {
       const data = await res.json();
+      console.log('Email sent successfully:', data);
       return new Response(JSON.stringify(data), {
         status: 200,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     } else {
       const error = await res.text();
+      console.error('Error from Resend API:', error);
       return new Response(JSON.stringify({ error }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
