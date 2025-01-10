@@ -11,7 +11,8 @@ const Collaborate = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const vision = formData.get('vision') as string;
@@ -27,7 +28,7 @@ const Collaborate = () => {
         title: "Vision shared!",
         description: "Thank you for sharing your vision with us. We'll be in touch soon.",
       });
-      e.currentTarget.reset();
+      form.reset();
     } catch (error) {
       console.error('Error sending email:', error);
       toast({
