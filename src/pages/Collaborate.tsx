@@ -8,13 +8,42 @@ import { useToast } from "@/hooks/use-toast";
 const Collaborate = () => {
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({
-      title: "Vision shared!",
-      description: "Thank you for sharing your vision with us. We'll be in touch soon.",
-    });
-    (e.target as HTMLFormElement).reset();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const vision = formData.get('vision') as string;
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          vision,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+
+      toast({
+        title: "Vision shared!",
+        description: "Thank you for sharing your vision with us. We'll be in touch soon.",
+      });
+      e.currentTarget.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send your vision. Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
