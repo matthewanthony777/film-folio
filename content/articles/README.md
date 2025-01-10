@@ -23,3 +23,19 @@ imageUrl: (optional) URL to header image
 
 Article content goes here...
 ```
+
+## Including Media
+
+### Images
+You can include images in your articles using standard Markdown syntax:
+```md
+![Alt text](/image-name.jpg)
+```
+
+### Videos
+For videos, use the HTML video tag:
+```html
+<video src="/video-name.mp4" controls width="100%"></video>
+```
+
+All media files should be placed in the `/public` folder at the project root. Reference them using absolute paths starting with `/`.
