@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import { Youtube, Instagram, TikTok } from "lucide-react";
+import { Youtube, Instagram, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
@@ -52,7 +52,7 @@ const Index = () => {
               asChild
             >
               <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
-                <TikTok className="h-6 w-6" />
+                <Video className="h-6 w-6" />
               </a>
             </Button>
           </div>
