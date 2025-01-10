@@ -12,6 +12,30 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
   return (
     <Card className="group hover:shadow-lg transition-shadow duration-300">
       <Link to={`/articles/${article.slug}`}>
+        <div className="w-full aspect-video rounded-t-lg overflow-hidden">
+          {article.coverVideo ? (
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={article.coverVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : article.coverImage ? (
+            <img
+              src={article.coverImage}
+              alt={article.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full bg-muted flex items-center justify-center">
+              <span className="text-muted-foreground">No preview available</span>
+            </div>
+          )}
+        </div>
         <CardHeader>
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
