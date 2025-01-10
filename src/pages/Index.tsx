@@ -21,8 +21,8 @@ const Index = () => {
               Your browser does not support the video tag.
             </video>
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
-              <h1 className="text-4xl font-bold mb-4">Welcome to Film Folio</h1>
-              <p className="text-xl">
+              <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-center">Welcome to Film Folio</h1>
+              <p className="text-base md:text-xl text-center px-4">
                 Explore our collection of thoughtful movie reviews and analyses
               </p>
             </div>
@@ -36,7 +36,7 @@ const Index = () => {
                 asChild
               >
                 <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                  <Youtube className="h-6 w-6" />
+                  <Youtube className="h-5 w-5 md:h-6 md:w-6" />
                 </a>
               </Button>
               <Button
@@ -46,7 +46,7 @@ const Index = () => {
                 asChild
               >
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="h-6 w-6" />
+                  <Instagram className="h-5 w-5 md:h-6 md:w-6" />
                 </a>
               </Button>
               <Button
@@ -56,7 +56,7 @@ const Index = () => {
                 asChild
               >
                 <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
-                  <Video className="h-6 w-6" />
+                  <Video className="h-5 w-5 md:h-6 md:w-6" />
                 </a>
               </Button>
             </div>

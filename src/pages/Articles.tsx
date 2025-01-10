@@ -22,8 +22,8 @@ const Articles = () => {
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-4">
           <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold">Movie Blog</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-2xl md:text-4xl font-bold">Movie Blog</h1>
+            <p className="text-sm md:text-base text-muted-foreground">
               Exploring the world of cinema through thoughtful analysis and reviews
             </p>
           </div>
@@ -37,7 +37,7 @@ const Articles = () => {
               <p className="text-muted-foreground">No articles found matching your criteria.</p>
             </div>
           ) : (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {filteredArticles.map((article) => (
                 <ArticleCard key={article.slug} article={article} />
               ))}

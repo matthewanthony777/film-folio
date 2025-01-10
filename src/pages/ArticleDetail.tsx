@@ -41,15 +41,15 @@ const ArticleDetail = () => {
   return (
     <>
       <Navigation />
-      <article className="container mx-auto px-4 py-8 max-w-3xl">
+      <article className="container mx-auto px-4 py-4 md:py-8 max-w-3xl">
         <Link to="/articles">
-          <Button variant="ghost" className="mb-8">
+          <Button variant="ghost" className="mb-4 md:mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Articles
           </Button>
         </Link>
         
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           {article.coverVideo && isVideoFile(article.coverVideo) && (
             <div className="w-full aspect-video rounded-lg overflow-hidden">
               <video 
@@ -77,7 +77,7 @@ const ArticleDetail = () => {
                 {new Date(article.date).toLocaleDateString()}
               </time>
             </div>
-            <h1 className="text-4xl font-bold">{article.title}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold">{article.title}</h1>
             <div className="flex items-center space-x-2">
               <span className="text-muted-foreground">By</span>
               <span className="font-medium">{article.author}</span>
@@ -91,7 +91,7 @@ const ArticleDetail = () => {
             </div>
           </div>
           
-          <div className="mt-8">
+          <div className="mt-8 prose dark:prose-invert max-w-none">
             <MDXRenderer content={article.content} />
           </div>
         </div>
