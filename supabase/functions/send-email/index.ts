@@ -22,6 +22,9 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { name, email, vision }: EmailRequest = await req.json();
 
+    // In development/testing, we can only send to the verified email
+    const toEmail = "initi82create@gmail.com"; // The verified email address
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -29,8 +32,8 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "matthewbarr777@resend.dev",
-        to: ["matthewbarr777@gmail.com"],
+        from: "Movie Blog <onboarding@resend.dev>", // Using Resend's testing domain
+        to: [toEmail],
         subject: `New Vision Shared by ${name}`,
         html: `
           <h2>New Vision Shared</h2>
