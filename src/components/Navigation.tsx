@@ -34,7 +34,7 @@ const Navigation = () => {
   );
 
   return (
-    <nav className="border-b sticky top-0 bg-background z-50">
+    <nav className="border-b sticky top-0 bg-background/80 backdrop-blur-sm z-50">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden md:flex">
@@ -50,22 +50,36 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-6 w-6" />
+            <Button variant="ghost" size="icon" className="relative">
+              <Menu className="h-5 w-5 transition-opacity duration-200 ease-in-out" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[240px] sm:w-[300px]">
-            <nav className="flex flex-col gap-4">
+          <SheetContent 
+            side="left" 
+            className="w-[240px] sm:w-[300px] bg-background/95 backdrop-blur-lg border-r"
+          >
+            <nav className="flex flex-col gap-6 mt-6">
+              <div className="px-2 mb-4">
+                <Link 
+                  to="/" 
+                  onClick={() => setIsOpen(false)}
+                  className="text-xl font-semibold tracking-tight"
+                >
+                  Film Folio
+                </Link>
+              </div>
               {menuItems.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center px-2 py-1 text-lg hover:bg-accent rounded-md"
+                  className="flex items-center px-2 py-1.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground rounded-md group"
                 >
-                  {item.icon && <item.icon className="mr-2 h-5 w-5" />}
-                  {item.label}
+                  {item.icon && (
+                    <item.icon className="mr-3 h-4 w-4 opacity-70 group-hover:opacity-100" />
+                  )}
+                  <span className="font-medium">{item.label}</span>
                 </Link>
               ))}
             </nav>
