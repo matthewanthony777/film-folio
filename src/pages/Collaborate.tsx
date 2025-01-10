@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Collaborate = () => {
   const { toast } = useToast();
@@ -16,21 +17,11 @@ const Collaborate = () => {
     const vision = formData.get('vision') as string;
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          vision,
-        }),
+      const { data, error } = await supabase.functions.invoke('send-email', {
+        body: { name, email, vision }
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send email');
-      }
+      if (error) throw error;
 
       toast({
         title: "Vision shared!",
@@ -38,6 +29,7 @@ const Collaborate = () => {
       });
       e.currentTarget.reset();
     } catch (error) {
+      console.error('Error sending email:', error);
       toast({
         title: "Error",
         description: "Failed to send your vision. Please try again later.",
