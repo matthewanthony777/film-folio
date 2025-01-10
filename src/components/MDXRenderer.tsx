@@ -1,6 +1,9 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
+import * as runtime from 'react/jsx-runtime';
+import { compile } from '@mdx-js/mdx';
 import { cn } from "@/lib/utils";
+import { useState, useEffect } from 'react';
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -28,10 +31,38 @@ interface MDXRendererProps {
 }
 
 const MDXRenderer: React.FC<MDXRendererProps> = ({ content }) => {
+  const [mdxModule, setMdxModule] = useState<any>(null);
+
+  useEffect(() => {
+    const compileMDX = async () => {
+      try {
+        const compiled = await compile(content, {
+          outputFormat: 'function-body',
+          development: false
+        });
+        
+        const code = String(compiled);
+        const func = new Function('React', 'jsx', '_components', '_props', code);
+        const module = func(runtime, runtime.jsx, components, {});
+        setMdxModule(module);
+      } catch (error) {
+        console.error('Error compiling MDX:', error);
+      }
+    };
+
+    compileMDX();
+  }, [content]);
+
+  if (!mdxModule) {
+    return <div>Loading...</div>;
+  }
+
+  const MDXContent = mdxModule.default;
+
   return (
     <MDXProvider components={components}>
       <div className="prose prose-lg max-w-none dark:prose-invert">
-        {content}
+        <MDXContent />
       </div>
     </MDXProvider>
   );
