@@ -1,4 +1,4 @@
-import { FileText, Users, Info, Menu, X } from "lucide-react";
+import { FileText, Users, Info, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import {
@@ -26,7 +26,7 @@ const Navigation = () => {
 
   const MenuItem = ({ to, label, icon: Icon }) => (
     <Link to={to} onClick={() => setIsOpen(false)}>
-      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+      <NavigationMenuLink className={`${navigationMenuTriggerStyle()} backdrop-blur-xl bg-background/5 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)]`}>
         {Icon && <Icon className="mr-2 h-4 w-4" />}
         {label}
       </NavigationMenuLink>
@@ -38,7 +38,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList>
+          <NavigationMenuList className="backdrop-blur-xl bg-background/5 border border-white/10 rounded-lg">
             {menuItems.map((item) => (
               <NavigationMenuItem key={item.to}>
                 <MenuItem {...item} />
