@@ -24,10 +24,10 @@ const Articles = () => {
       <Navigation />
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-4">
-          <div className="text-center space-y-2">
-            <h1 className="text-2xl md:text-4xl font-bold">Movie Blog</h1>
-            <p className="text-sm md:text-base text-muted-foreground">
-              Exploring the world of cinema through thoughtful analysis and reviews
+          <div className="text-center space-y-2 mt-16">
+            <h1 className="text-2xl md:text-4xl font-bold font-playfair">The Cinema Vault</h1>
+            <p className="text-sm md:text-base text-muted-foreground font-playfair">
+              Unraveling film's mysteries from script to screen and beyond
             </p>
           </div>
           
