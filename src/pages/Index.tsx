@@ -6,12 +6,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="container-fluid px-4 py-4">
-        <div className="text-center space-y-8">
-          <div className="relative max-w-6xl mx-auto rounded-lg overflow-hidden shadow-xl">
-            <div className="absolute inset-0 bg-black/30 z-10"></div>
+      <main className="relative h-[calc(100vh-64px)]">
+        <div className="relative h-full">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 bg-black/40 z-10"></div>
             <video 
-              className="w-full h-[70vh] object-cover"
+              className="w-full h-full object-cover"
               autoPlay 
               loop 
               muted 
@@ -27,37 +27,39 @@ const Index = () => {
               </p>
             </div>
           </div>
-          <div className="flex justify-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:text-red-500"
-              asChild
-            >
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <Youtube className="h-6 w-6" />
-              </a>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:text-pink-500"
-              asChild
-            >
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <Instagram className="h-6 w-6" />
-              </a>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:text-black dark:hover:text-white"
-              asChild
-            >
-              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
-                <Video className="h-6 w-6" />
-              </a>
-            </Button>
+          <div className="absolute bottom-8 left-0 right-0 z-30">
+            <div className="flex justify-center gap-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-red-500 bg-black/20 hover:bg-black/30"
+                asChild
+              >
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                  <Youtube className="h-6 w-6" />
+                </a>
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-pink-500 bg-black/20 hover:bg-black/30"
+                asChild
+              >
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-6 w-6" />
+                </a>
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-white bg-black/20 hover:bg-black/30"
+                asChild
+              >
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+                  <Video className="h-6 w-6" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </main>
