@@ -29,8 +29,9 @@ const Navigation = () => {
       <NavigationMenuLink 
         className={`${navigationMenuTriggerStyle()} 
           bg-transparent
+          dark:text-white
+          text-zinc-900
           hover:bg-white/10
-          text-white
           border-none
           shadow-none
           transition-all 
@@ -70,7 +71,7 @@ const Navigation = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="relative transition-transform duration-300 hover:scale-110 active:scale-95 text-white hover:bg-white/10"
+              className="relative transition-transform duration-300 hover:scale-110 active:scale-95 dark:text-white text-zinc-900 hover:bg-white/10"
             >
               <Menu className="h-5 w-5 transition-opacity duration-200 ease-in-out" />
               <span className="sr-only">Toggle menu</span>
@@ -111,7 +112,7 @@ const Navigation = () => {
         <div className="md:hidden">
           <Link 
             to="/" 
-            className="text-lg font-semibold text-white transition-colors duration-300 hover:text-white/80 font-playfair"
+            className="text-lg font-semibold dark:text-white text-zinc-900 transition-colors duration-300 hover:text-zinc-800 dark:hover:text-white/80 font-playfair"
           >
             Screen Scholar
           </Link>
