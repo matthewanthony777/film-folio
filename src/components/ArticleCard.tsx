@@ -23,6 +23,12 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
     return imageExtensions.some(ext => filename.toLowerCase().endsWith(ext));
   };
 
+  // Helper function to get the full path
+  const getMediaPath = (path: string) => {
+    if (!path) return '';
+    return path.startsWith('/') ? path : `/${path}`;
+  };
+
   return (
     <Card className="group hover:shadow-lg transition-shadow duration-300">
       <Link to={`/articles/${article.slug}`}>
@@ -35,12 +41,12 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
               muted
               playsInline
             >
-              <source src={article.coverVideo} type="video/mp4" />
+              <source src={getMediaPath(article.coverVideo)} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           ) : article.coverImage && isImageFile(article.coverImage) ? (
             <img
-              src={article.coverImage}
+              src={getMediaPath(article.coverImage)}
               alt={article.title}
               className="w-full h-full object-cover"
             />
