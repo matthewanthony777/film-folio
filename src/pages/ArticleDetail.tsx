@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import MDXRenderer from "@/components/MDXRenderer";
 
 const ArticleDetail = () => {
   const { slug } = useParams();
@@ -64,8 +65,8 @@ const ArticleDetail = () => {
           </div>
         </div>
         
-        <div className="prose prose-lg max-w-none">
-          {article.content}
+        <div className="mt-8">
+          <MDXRenderer content={article.content} />
         </div>
       </div>
     </article>
