@@ -24,6 +24,16 @@ const ArticleDetail = () => {
     );
   }
 
+  const isVideoFile = (filename: string) => {
+    const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi'];
+    return videoExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+  };
+
+  const isImageFile = (filename: string) => {
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif'];
+    return imageExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+  };
+
   return (
     <article className="container mx-auto px-4 py-8 max-w-3xl">
       <Link to="/articles">
@@ -34,7 +44,7 @@ const ArticleDetail = () => {
       </Link>
       
       <div className="space-y-6">
-        {article.coverVideo && (
+        {article.coverVideo && isVideoFile(article.coverVideo) && (
           <div className="w-full aspect-video rounded-lg overflow-hidden">
             <video 
               src={article.coverVideo} 
@@ -44,7 +54,7 @@ const ArticleDetail = () => {
           </div>
         )}
         
-        {article.coverImage && (
+        {article.coverImage && isImageFile(article.coverImage) && (
           <div className="w-full aspect-video rounded-lg overflow-hidden">
             <img 
               src={article.coverImage} 
@@ -67,7 +77,7 @@ const ArticleDetail = () => {
             <span className="font-medium">{article.author}</span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {article.tags.map(tag => (
+            {article.tags && article.tags.map(tag => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>

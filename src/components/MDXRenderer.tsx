@@ -24,6 +24,14 @@ const components = {
   li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
     <li className={cn("ml-4", className)} {...props} />
   ),
+  img: ({ src, alt, className, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    <img 
+      src={src} 
+      alt={alt} 
+      className={cn("w-full rounded-lg my-4", className)} 
+      {...props} 
+    />
+  ),
 };
 
 interface MDXRendererProps {
