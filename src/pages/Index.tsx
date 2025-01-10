@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import { Youtube, Instagram, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import TikTokIcon from "@/components/icons/TikTokIcon";
 
 const Index = () => {
   return (
@@ -35,7 +36,7 @@ const Index = () => {
                 className="hover:text-red-500 bg-black/20 hover:bg-black/30"
                 asChild
               >
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel">
                   <Youtube className="h-5 w-5 md:h-6 md:w-6" />
                 </a>
               </Button>
@@ -45,7 +46,7 @@ const Index = () => {
                 className="hover:text-pink-500 bg-black/20 hover:bg-black/30"
                 asChild
               >
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
                   <Instagram className="h-5 w-5 md:h-6 md:w-6" />
                 </a>
               </Button>
@@ -55,8 +56,13 @@ const Index = () => {
                 className="hover:text-white bg-black/20 hover:bg-black/30"
                 asChild
               >
-                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
-                  <Video className="h-5 w-5 md:h-6 md:w-6" />
+                <a 
+                  href="https://www.tiktok.com/@thescreenscholar" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on TikTok"
+                >
+                  <TikTokIcon className="h-5 w-5 md:h-6 md:w-6" />
                 </a>
               </Button>
             </div>
