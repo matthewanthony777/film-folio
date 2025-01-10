@@ -7,18 +7,13 @@ import ArticleFilters from "@/components/ArticleFilters";
 const Articles = () => {
   const allArticles = getAllArticles();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
 
   const filteredArticles = allArticles.filter((article) => {
     const matchesSearch = 
       article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       article.description.toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesCategory = 
-      selectedCategory === "All Categories" || 
-      article.category === selectedCategory;
-
-    return matchesSearch && matchesCategory;
+    return matchesSearch;
   });
 
   return (
@@ -35,8 +30,6 @@ const Articles = () => {
           
           <ArticleFilters
             onSearchChange={setSearchQuery}
-            onCategoryChange={setSelectedCategory}
-            selectedCategory={selectedCategory}
           />
 
           {filteredArticles.length === 0 ? (
