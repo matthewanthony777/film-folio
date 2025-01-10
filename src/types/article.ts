@@ -5,7 +5,7 @@ export interface ArticleMetadata {
   description: string;
   slug: string;
   tags: string[];
-  imageUrl?: string;
+  coverImage?: string;
   coverVideo?: string;
 }
 

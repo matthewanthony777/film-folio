@@ -44,6 +44,16 @@ const ArticleDetail = () => {
           </div>
         )}
         
+        {article.coverImage && (
+          <div className="w-full aspect-video rounded-lg overflow-hidden">
+            <img 
+              src={article.coverImage} 
+              alt={article.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+        
         <div className="space-y-4">
           <div className="flex items-center space-x-2">
             <Calendar className="w-4 h-4 text-muted-foreground" />
