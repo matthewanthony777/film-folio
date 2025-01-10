@@ -37,7 +37,8 @@ const Navigation = () => {
           duration-300 
           hover:scale-105 
           hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]
-          active:scale-95`}
+          active:scale-95
+          font-playfair`}
       >
         {Icon && <Icon className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:scale-110" />}
         {label}
@@ -90,7 +91,7 @@ const Navigation = () => {
                 <Link 
                   to="/" 
                   onClick={() => setIsOpen(false)}
-                  className="text-3xl font-bold tracking-tight text-white/90 transition-colors duration-300 hover:text-white"
+                  className="text-3xl font-bold tracking-tight text-white/90 transition-colors duration-300 hover:text-white font-playfair"
                 >
                   Film Folio
                 </Link>
@@ -100,7 +101,7 @@ const Navigation = () => {
                   key={item.to}
                   to={item.to}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center px-6 py-3 text-lg text-white/80 transition-all duration-300 hover:bg-white/10 hover:text-white group hover:translate-x-2"
+                  className="flex items-center px-6 py-3 text-lg text-white/80 transition-all duration-300 hover:bg-white/10 hover:text-white group hover:translate-x-2 font-playfair"
                 >
                   {item.icon && (
                     <item.icon className="mr-4 h-5 w-5 opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110" />
@@ -116,7 +117,7 @@ const Navigation = () => {
         <div className="md:hidden">
           <Link 
             to="/" 
-            className="text-lg font-semibold transition-colors duration-300 hover:text-primary"
+            className="text-lg font-semibold transition-colors duration-300 hover:text-primary font-playfair"
           >
             Film Folio
           </Link>
