@@ -1,4 +1,4 @@
-import { FileText, Users, Info, Menu } from "lucide-react";
+import { FileText, Users, Info, Menu, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import {
@@ -18,7 +18,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { to: "/", label: "Home", icon: null },
+    { to: "/", label: "Home", icon: Home },
     { to: "/articles", label: "Articles", icon: FileText },
     { to: "/collaborate", label: "Collaborate", icon: Users },
     { to: "/about", label: "About Us", icon: Info },

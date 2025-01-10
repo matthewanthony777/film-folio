@@ -52,22 +52,37 @@ const Collaborate = () => {
           </div>
 
           <div className="grid gap-6">
-            <div className="p-6 border rounded-lg bg-card">
-              <h2 className="text-2xl font-semibold mb-4">Ways to Contribute</h2>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-2">
-                  <span className="font-medium">• Write Reviews:</span>
-                  <span className="text-muted-foreground">Share your perspective on films</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-medium">• Technical Analysis:</span>
-                  <span className="text-muted-foreground">Deep dive into cinematography and production</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-medium">• Industry News:</span>
-                  <span className="text-muted-foreground">Cover latest developments in cinema</span>
-                </li>
-              </ul>
+            <div 
+              className="p-8 border rounded-lg bg-card/50 backdrop-blur-sm animate-fade-in space-y-6"
+              style={{ 
+                animation: "fade-in 0.6s ease-out, slide-in-right 0.6s ease-out" 
+              }}
+            >
+              <h2 className="text-2xl font-semibold mb-6 text-center">Let's Shape the Future of Film Together</h2>
+              <p className="text-lg leading-relaxed">
+                Are you ready to turn your passion for cinema into something more? Whether you're an aspiring critic, 
+                industry insider, or creative visionary, we're opening our doors to new voices who stand out from the crowd.
+              </p>
+              
+              <div className="space-y-4 mt-8">
+                <h3 className="text-xl font-semibold mb-4">Why Join Us Now?</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-background/50 rounded-lg backdrop-blur-sm">
+                    <h4 className="font-semibold mb-2">Be Part of Something Exclusive</h4>
+                    <p>We're carefully curating a network of film enthusiasts and professionals. Early contributors get priority access to upcoming opportunities and industry connections.</p>
+                  </div>
+                  
+                  <div className="p-4 bg-background/50 rounded-lg backdrop-blur-sm">
+                    <h4 className="font-semibold mb-2">Establish Your Authority</h4>
+                    <p>Build your reputation alongside established voices in film criticism. Your unique perspective could reach thousands of engaged readers.</p>
+                  </div>
+                  
+                  <div className="p-4 bg-background/50 rounded-lg backdrop-blur-sm">
+                    <h4 className="font-semibold mb-2">Access Hidden Opportunities</h4>
+                    <p>Get early insights into industry developments and connect with our network of film professionals before opportunities become public.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <form onSubmit={handleSubmit} className="p-6 border rounded-lg bg-card space-y-4">
@@ -115,13 +130,6 @@ const Collaborate = () => {
                 Share your Vision
               </Button>
             </form>
-
-            <div className="flex justify-center">
-              <Button className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                Contact Us
-              </Button>
-            </div>
           </div>
         </div>
       </main>
