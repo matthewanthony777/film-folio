@@ -1,60 +1,66 @@
 import { Article, ArticleMetadata } from "@/types/article";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
-// Articles data from MDX files
-const articles: Article[] = [
-  {
-    title: "Folk Horror",
-    date: "2024-03-14",
-    author: "Matthew Barr",
-    description: "Examining Eggers Cinematography",
-    slug: "robert-eggers-movie",
-    tags: ["Robert Eggers", "Folk Horror", "Cinematography"],
-    content: `# Robert Eggers' Mastery of Historical Horror
+const articlesDirectory = path.join(process.cwd(), 'content/articles');
 
-Robert Eggers has distinguished himself through meticulous historical accuracy and atmospheric folk horror. His films demonstrate an unwavering commitment to period authenticity while exploring humanity's darkest fears.
+const getAllArticles = (): Article[] => {
+  // Get all .mdx files from the articles directory
+  const fileNames = fs.readdirSync(articlesDirectory)
+    .filter(fileName => fileName.endsWith('.mdx'));
 
-## Key Films and Their Elements
+  const articles = fileNames.map(fileName => {
+    // Remove ".mdx" from file name to get slug
+    const slug = fileName.replace(/\.mdx$/, '');
 
-### The Witch (2015)
-- 1630s New England setting
-- Religious hysteria and folklore
-- Period-accurate dialogue and customs
+    // Read markdown file as string
+    const fullPath = path.join(articlesDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-### The Lighthouse (2019)
-- Maritime mythology
-- Psychological deterioration
-- 19th-century nautical vernacular`,
-    coverVideo: "/chris-nolan-edit.mp4"
-  },
-  {
-    title: "All Things Christopher",
-    date: "2024-03-14",
-    author: "Matthew Barr",
-    description: "Examining Nolans love of time",
-    slug: "inception-movie-review",
-    tags: ["Christopher Nolan", "Film Analysis", "Time"],
-    content: `# Christopher Nolan's Mastery of Temporal Narratives
+    // Use gray-matter to parse the post metadata section
+    const { data, content } = matter(fileContents);
 
-Christopher Nolan has established himself as a master of temporal manipulation in cinema, weaving complex narratives that challenge our perception of time. His filmography demonstrates a consistent fascination with time as both a narrative device and a philosophical concept.
+    // Combine the data with the slug
+    return {
+      slug,
+      content,
+      title: data.title,
+      date: data.date,
+      author: data.author,
+      description: data.description,
+      tags: data.category ? [data.category] : [],
+      coverVideo: data.coverVideo,
+    } as Article;
+  });
 
-## Key Films and Their Temporal Elements
-
-### Memento (2000)
-- Reverse chronological storytelling
-- Short-term memory loss as a narrative device
-- Time as an unreliable construct`,
-    coverVideo: "/chris-nolan-edit.mp4"
-  }
-];
-
-export const getAllArticles = (): Article[] => {
+  // Sort articles by date
   return articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
-export const getArticleBySlug = (slug: string): Article | undefined => {
-  return articles.find(article => article.slug === slug);
+const getArticleBySlug = (slug: string): Article | undefined => {
+  try {
+    const fullPath = path.join(articlesDirectory, `${slug}.mdx`);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+
+    return {
+      slug,
+      content,
+      title: data.title,
+      date: data.date,
+      author: data.author,
+      description: data.description,
+      tags: data.category ? [data.category] : [],
+      coverVideo: data.coverVideo,
+    } as Article;
+  } catch {
+    return undefined;
+  }
 };
 
-export const getLatestArticles = (count: number = 5): Article[] => {
+const getLatestArticles = (count: number = 5): Article[] => {
   return getAllArticles().slice(0, count);
 };
+
+export { getAllArticles, getArticleBySlug, getLatestArticles };
