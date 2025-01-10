@@ -83,14 +83,14 @@ const Navigation = () => {
           </SheetTrigger>
           <SheetContent 
             side="left" 
-            className="w-[240px] sm:w-[300px] bg-background/95 backdrop-blur-lg border-r"
+            className="w-full h-full bg-gradient-to-b from-black/80 via-black/60 to-black/80 backdrop-blur-md border-none"
           >
-            <nav className="flex flex-col gap-6 mt-6">
-              <div className="px-2 mb-4">
+            <nav className="flex flex-col gap-8 mt-12">
+              <div className="px-6 mb-8">
                 <Link 
                   to="/" 
                   onClick={() => setIsOpen(false)}
-                  className="text-xl font-semibold tracking-tight transition-colors duration-300 hover:text-primary"
+                  className="text-3xl font-bold tracking-tight text-white/90 transition-colors duration-300 hover:text-white"
                 >
                   Film Folio
                 </Link>
@@ -100,10 +100,10 @@ const Navigation = () => {
                   key={item.to}
                   to={item.to}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center px-2 py-1.5 text-sm transition-all duration-300 hover:bg-accent hover:text-accent-foreground rounded-md group hover:translate-x-1"
+                  className="flex items-center px-6 py-3 text-lg text-white/80 transition-all duration-300 hover:bg-white/10 hover:text-white group hover:translate-x-2"
                 >
                   {item.icon && (
-                    <item.icon className="mr-3 h-4 w-4 opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110" />
+                    <item.icon className="mr-4 h-5 w-5 opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110" />
                   )}
                   <span className="font-medium">{item.label}</span>
                 </Link>
