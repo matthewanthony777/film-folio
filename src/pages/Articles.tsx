@@ -3,8 +3,9 @@ import { getAllArticles } from "@/utils/articles";
 import ArticleCard from "@/components/ArticleCard";
 import Navigation from "@/components/Navigation";
 import ArticleFilters from "@/components/ArticleFilters";
-import { TikTok, Youtube, Instagram } from "lucide-react";
+import { Youtube, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import TikTokIcon from "@/components/icons/TikTokIcon";
 
 const Articles = () => {
   const allArticles = getAllArticles();
@@ -63,7 +64,7 @@ const Articles = () => {
                     rel="noopener noreferrer"
                     className="transition-transform hover:scale-110"
                   >
-                    <TikTok className="w-6 h-6" />
+                    <TikTokIcon className="w-6 h-6" />
                     <span className="sr-only">TikTok</span>
                   </a>
                 </Button>
