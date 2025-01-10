@@ -1,12 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 interface ArticleFiltersProps {
   onSearchChange: (value: string) => void;
@@ -45,21 +39,28 @@ const ArticleFilters = ({
           onChange={(e) => onSearchChange(e.target.value)}
         />
       </div>
-      <Select
-        value={selectedCategory}
-        onValueChange={onCategoryChange}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder="Select a category" />
-        </SelectTrigger>
-        <SelectContent>
+      <div className="w-full overflow-x-auto pb-2">
+        <ToggleGroup
+          type="single"
+          value={selectedCategory}
+          onValueChange={(value) => {
+            if (value) onCategoryChange(value);
+          }}
+          className="flex flex-wrap gap-2"
+        >
           {CATEGORIES.map((category) => (
-            <SelectItem key={category} value={category}>
+            <ToggleGroupItem
+              key={category}
+              value={category}
+              size="sm"
+              variant="outline"
+              className="whitespace-nowrap"
+            >
               {category}
-            </SelectItem>
+            </ToggleGroupItem>
           ))}
-        </SelectContent>
-      </Select>
+        </ToggleGroup>
+      </div>
     </div>
   );
 };
