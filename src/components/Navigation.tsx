@@ -9,11 +9,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navigation = () => {
   return (
     <nav className="border-b">
-      <div className="container mx-auto px-4 py-2">
+      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -33,6 +34,7 @@ const Navigation = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+        <ThemeToggle />
       </div>
     </nav>
   );
