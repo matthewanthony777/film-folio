@@ -28,15 +28,14 @@ const Navigation = () => {
     <Link to={to} onClick={() => setIsOpen(false)}>
       <NavigationMenuLink 
         className={`${navigationMenuTriggerStyle()} 
-          backdrop-blur-xl 
-          bg-background/5 
-          border 
-          border-white/10 
-          shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)]
+          bg-transparent
+          hover:bg-white/10
+          text-white
+          border-none
+          shadow-none
           transition-all 
           duration-300 
           hover:scale-105 
-          hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]
           active:scale-95
           font-playfair`}
       >
@@ -47,20 +46,15 @@ const Navigation = () => {
   );
 
   return (
-    <nav className="border-b sticky top-0 bg-background/80 backdrop-blur-sm z-50 transition-all duration-300">
+    <nav className="fixed w-full top-0 z-50 bg-transparent backdrop-blur-sm transition-all duration-300">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList 
-            className="backdrop-blur-xl 
-              bg-background/5 
-              border 
-              border-white/10 
+            className="bg-transparent 
               rounded-lg 
-              shadow-lg 
               transition-all 
-              duration-300 
-              hover:shadow-xl"
+              duration-300"
           >
             {menuItems.map((item) => (
               <NavigationMenuItem key={item.to}>
@@ -76,7 +70,7 @@ const Navigation = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="relative transition-transform duration-300 hover:scale-110 active:scale-95"
+              className="relative transition-transform duration-300 hover:scale-110 active:scale-95 text-white hover:bg-white/10"
             >
               <Menu className="h-5 w-5 transition-opacity duration-200 ease-in-out" />
               <span className="sr-only">Toggle menu</span>
@@ -117,7 +111,7 @@ const Navigation = () => {
         <div className="md:hidden">
           <Link 
             to="/" 
-            className="text-lg font-semibold transition-colors duration-300 hover:text-primary font-playfair"
+            className="text-lg font-semibold text-white transition-colors duration-300 hover:text-white/80 font-playfair"
           >
             Screen Scholar
           </Link>
