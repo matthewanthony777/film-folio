@@ -1,26 +1,25 @@
 import { Article, ArticleMetadata } from "@/types/article";
 
-// Simulated articles data - in a real app, this would come from MDX files
+// Articles data from MDX files
 const articles: Article[] = [
   {
-    title: "The Evolution of Cinema",
-    date: "2024-03-20",
-    author: "Jane Smith",
-    description: "A deep dive into how cinema has evolved over the past century",
-    slug: "evolution-of-cinema",
-    tags: ["history", "cinema", "technology"],
-    imageUrl: "/placeholder.svg",
-    content: "Cinema has come a long way since its inception..."
-  },
-  {
-    title: "Top 10 Films of 2023",
-    date: "2024-03-15",
-    author: "John Doe",
-    description: "Our curated selection of the best films from last year",
-    slug: "top-films-2023",
-    tags: ["reviews", "best-of", "2023"],
-    imageUrl: "/placeholder.svg",
-    content: "2023 was an exceptional year for cinema..."
+    title: "All Things Christopher",
+    date: "2024-03-14",
+    author: "Matthew Barr",
+    description: "Examining Nolans love of time",
+    slug: "inception-movie-review",
+    tags: ["Christopher Nolan", "Film Analysis", "Time"],
+    content: `# Christopher Nolan's Mastery of Temporal Narratives
+
+Christopher Nolan has established himself as a master of temporal manipulation in cinema, weaving complex narratives that challenge our perception of time. His filmography demonstrates a consistent fascination with time as both a narrative device and a philosophical concept.
+
+## Key Films and Their Temporal Elements
+
+### Memento (2000)
+- Reverse chronological storytelling
+- Short-term memory loss as a narrative device
+- Time as an unreliable construct`,
+    coverVideo: "/chris-nolan-edit.mp4"
   }
 ];
 

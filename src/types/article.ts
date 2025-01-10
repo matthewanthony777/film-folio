@@ -6,10 +6,11 @@ export interface ArticleMetadata {
   slug: string;
   tags: string[];
   imageUrl?: string;
+  coverVideo?: string;
 }
 
 export interface Article extends ArticleMetadata {
-  content: string; // Can include markdown image/video syntax
+  content: string;
 }
 
 // Example of supported media syntax in content:
