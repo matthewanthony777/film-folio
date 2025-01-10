@@ -10,10 +10,12 @@ const Articles = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
 
   const filteredArticles = allArticles.filter((article) => {
-    const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    const matchesSearch = 
+      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       article.description.toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesCategory = selectedCategory === "All Categories" || 
+    const matchesCategory = 
+      selectedCategory === "All Categories" || 
       article.category === selectedCategory;
 
     return matchesSearch && matchesCategory;
