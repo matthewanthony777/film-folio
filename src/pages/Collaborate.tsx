@@ -1,4 +1,4 @@
-import { Mail, Github } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import { Input } from "@/components/ui/input";
@@ -94,14 +94,10 @@ const Collaborate = () => {
               </Button>
             </form>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
                 Contact Us
-              </Button>
-              <Button variant="outline" className="flex items-center gap-2">
-                <Github className="h-4 w-4" />
-                View on GitHub
               </Button>
             </div>
           </div>
