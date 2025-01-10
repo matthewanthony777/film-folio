@@ -29,8 +29,8 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Movie Blog <onboarding@resend.dev>",
-        to: ["your-email@example.com"], // Replace with your email
+        from: "Movie Blog <matthewbarr777@resend.dev>",
+        to: ["matthewbarr777@resend.dev", "matthewbarr777@gmail.com"],
         subject: `New Vision Shared by ${name}`,
         html: `
           <h2>New Vision Shared</h2>
@@ -56,6 +56,7 @@ const handler = async (req: Request): Promise<Response> => {
       });
     }
   } catch (error) {
+    console.error('Error in send-email function:', error);
     return new Response(
       JSON.stringify({ error: "Failed to send email" }),
       {
