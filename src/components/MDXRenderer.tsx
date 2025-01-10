@@ -4,6 +4,7 @@ import * as runtime from 'react/jsx-runtime';
 import { compile } from '@mdx-js/mdx';
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from 'react';
+import YouTubeEmbed from './YouTubeEmbed';
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -24,14 +25,21 @@ const components = {
   li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
     <li className={cn("ml-4", className)} {...props} />
   ),
-  img: ({ src, alt, className, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <img 
-      src={src} 
-      alt={alt} 
-      className={cn("w-full rounded-lg my-4", className)} 
-      {...props} 
-    />
-  ),
+  img: ({ src, alt, className, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    // Check if the src is an external URL
+    const isExternalUrl = src?.startsWith('http') || src?.startsWith('https');
+    const imageSrc = isExternalUrl ? src : src?.startsWith('/') ? src : `/${src}`;
+    
+    return (
+      <img 
+        src={imageSrc} 
+        alt={alt} 
+        className={cn("w-full rounded-lg my-4", className)} 
+        {...props} 
+      />
+    );
+  },
+  YouTube: YouTubeEmbed,
 };
 
 interface MDXRendererProps {
