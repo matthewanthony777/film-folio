@@ -11,12 +11,14 @@ interface ArticleCardProps {
 const ArticleCard = ({ article }: ArticleCardProps) => {
   // Helper function to determine if a file is a video
   const isVideoFile = (filename: string) => {
+    if (!filename) return false;
     const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi'];
     return videoExtensions.some(ext => filename.toLowerCase().endsWith(ext));
   };
 
   // Helper function to determine if a file is an image
   const isImageFile = (filename: string) => {
+    if (!filename) return false;
     const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif'];
     return imageExtensions.some(ext => filename.toLowerCase().endsWith(ext));
   };
@@ -36,7 +38,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
               <source src={article.coverVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-          ) : (article.coverImage && isImageFile(article.coverImage)) ? (
+          ) : article.coverImage && isImageFile(article.coverImage) ? (
             <img
               src={article.coverImage}
               alt={article.title}
@@ -66,7 +68,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         </CardContent>
         <CardFooter>
           <div className="flex flex-wrap gap-2">
-            {article.tags.map(tag => (
+            {article.tags && article.tags.map(tag => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>
