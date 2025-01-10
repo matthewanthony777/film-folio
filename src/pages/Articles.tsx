@@ -3,6 +3,8 @@ import { getAllArticles } from "@/utils/articles";
 import ArticleCard from "@/components/ArticleCard";
 import Navigation from "@/components/Navigation";
 import ArticleFilters from "@/components/ArticleFilters";
+import { TikTok, Youtube, Instagram } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Articles = () => {
   const allArticles = getAllArticles();
@@ -43,6 +45,74 @@ const Articles = () => {
               ))}
             </div>
           )}
+
+          {/* Social Media Links Section */}
+          <div className="mt-16 border-t pt-8">
+            <div className="text-center space-y-6">
+              <h2 className="text-2xl font-semibold">Follow Us</h2>
+              <div className="flex justify-center gap-4">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="w-12 h-12 rounded-full hover:bg-muted"
+                  asChild
+                >
+                  <a
+                    href="https://www.tiktok.com/@thescreenscholar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-transform hover:scale-110"
+                  >
+                    <TikTok className="w-6 h-6" />
+                    <span className="sr-only">TikTok</span>
+                  </a>
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="w-12 h-12 rounded-full hover:bg-muted"
+                  asChild
+                >
+                  <a
+                    href="#" // Add your Instagram URL when available
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-transform hover:scale-110"
+                  >
+                    <Instagram className="w-6 h-6" />
+                    <span className="sr-only">Instagram</span>
+                  </a>
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="w-12 h-12 rounded-full hover:bg-muted"
+                  asChild
+                >
+                  <a
+                    href="#" // Add your YouTube URL when available
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-transform hover:scale-110"
+                  >
+                    <Youtube className="w-6 h-6" />
+                    <span className="sr-only">YouTube</span>
+                  </a>
+                </Button>
+              </div>
+              <div className="mt-4">
+                <Button
+                  variant="outline"
+                  className="rounded-full px-8"
+                  asChild
+                >
+                  <a href="#" className="font-medium">
+                    Subscribe
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
