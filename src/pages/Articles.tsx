@@ -1,9 +1,23 @@
+import { useState } from "react";
 import { getAllArticles } from "@/utils/articles";
 import ArticleCard from "@/components/ArticleCard";
 import Navigation from "@/components/Navigation";
+import ArticleFilters from "@/components/ArticleFilters";
 
 const Articles = () => {
-  const articles = getAllArticles();
+  const allArticles = getAllArticles();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+
+  const filteredArticles = allArticles.filter((article) => {
+    const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.description.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchesCategory = selectedCategory === "All Categories" || 
+      article.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -16,11 +30,24 @@ const Articles = () => {
               Exploring the world of cinema through thoughtful analysis and reviews
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
+          
+          <ArticleFilters
+            onSearchChange={setSearchQuery}
+            onCategoryChange={setSelectedCategory}
+            selectedCategory={selectedCategory}
+          />
+
+          {filteredArticles.length === 0 ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">No articles found matching your criteria.</p>
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {filteredArticles.map((article) => (
+                <ArticleCard key={article.slug} article={article} />
+              ))}
+            </div>
+          )}
         </div>
       </main>
     </div>
