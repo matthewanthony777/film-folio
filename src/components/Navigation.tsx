@@ -1,4 +1,4 @@
-import { FileText } from "lucide-react";
+import { FileText, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   NavigationMenu,
@@ -29,6 +29,14 @@ const Navigation = () => {
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <FileText className="mr-2 h-4 w-4" />
                   Articles
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/collaborate">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Users className="mr-2 h-4 w-4" />
+                  Collaborate
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>

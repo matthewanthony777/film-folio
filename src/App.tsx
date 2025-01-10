@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import Articles from "./pages/Articles";
 import ArticleDetail from "./pages/ArticleDetail";
+import Collaborate from "./pages/Collaborate";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/articles/:slug" element={<ArticleDetail />} />
+            <Route path="/collaborate" element={<Collaborate />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
