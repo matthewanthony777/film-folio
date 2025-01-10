@@ -93,7 +93,7 @@ const Navigation = () => {
                   onClick={() => setIsOpen(false)}
                   className="text-3xl font-bold tracking-tight text-white/90 transition-colors duration-300 hover:text-white font-playfair"
                 >
-                  Film Folio
+                  Screen Scholar
                 </Link>
               </div>
               {menuItems.map((item) => (
@@ -119,7 +119,7 @@ const Navigation = () => {
             to="/" 
             className="text-lg font-semibold transition-colors duration-300 hover:text-primary font-playfair"
           >
-            Film Folio
+            Screen Scholar
           </Link>
         </div>
 
