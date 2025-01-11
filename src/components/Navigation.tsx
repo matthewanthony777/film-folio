@@ -78,25 +78,16 @@ const Navigation = () => {
             </Button>
           </SheetTrigger>
           <SheetContent 
-            side="left" 
-            className="w-full h-full bg-gradient-to-b from-black/80 via-black/60 to-black/80 backdrop-blur-md border-none"
+            side="top" 
+            className="w-full bg-transparent backdrop-blur-sm border-none pt-16"
           >
-            <nav className="flex flex-col gap-8 mt-12">
-              <div className="px-6 mb-8">
-                <Link 
-                  to="/" 
-                  onClick={() => setIsOpen(false)}
-                  className="text-3xl font-bold tracking-tight text-white/90 transition-colors duration-300 hover:text-white font-playfair"
-                >
-                  Screen Scholar
-                </Link>
-              </div>
+            <nav className="flex flex-col gap-4">
               {menuItems.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center px-6 py-3 text-lg text-white/80 transition-all duration-300 hover:bg-white/10 hover:text-white group hover:translate-x-2 font-playfair"
+                  className="flex items-center px-4 py-2 text-lg dark:text-white/80 text-zinc-900 transition-all duration-300 hover:bg-white/10 group rounded-lg font-playfair"
                 >
                   {item.icon && (
                     <item.icon className="mr-4 h-5 w-5 opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110" />
