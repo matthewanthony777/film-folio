@@ -6,6 +6,7 @@ import ArticleFilters from "@/components/ArticleFilters";
 import { Youtube, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TikTokIcon from "@/components/icons/TikTokIcon";
+import Footer from "@/components/Footer";
 
 const Articles = () => {
   const allArticles = getAllArticles();
@@ -20,9 +21,9 @@ const Articles = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 flex-1">
         <div className="space-y-4">
           <div className="text-center space-y-2 mt-16">
             <h1 className="text-2xl md:text-4xl font-bold font-playfair">The Cinema Vault</h1>
@@ -75,7 +76,7 @@ const Articles = () => {
                   asChild
                 >
                   <a
-                    href="#" // Add your Instagram URL when available
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-transform hover:scale-110"
@@ -91,7 +92,7 @@ const Articles = () => {
                   asChild
                 >
                   <a
-                    href="#" // Add your YouTube URL when available
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-transform hover:scale-110"
@@ -116,6 +117,7 @@ const Articles = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

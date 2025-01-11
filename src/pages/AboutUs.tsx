@@ -1,10 +1,11 @@
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 flex-1">
         <div className="max-w-3xl mx-auto prose dark:prose-invert">
           <h1 className="text-4xl font-bold mb-6 font-playfair mt-16">Screen Scholar</h1>
           <p className="text-lg mb-6 leading-relaxed">
@@ -15,6 +16,7 @@ const AboutUs = () => {
           </p>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

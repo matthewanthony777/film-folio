@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import Footer from "@/components/Footer";
 
 const Collaborate = () => {
   const { toast } = useToast();
@@ -40,9 +41,9 @@ const Collaborate = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 flex-1">
         <div className="max-w-2xl mx-auto space-y-8 mt-16">
           <div className="text-center space-y-4">
             <h1 className="text-4xl font-bold">Let's Collaborate</h1>
@@ -133,6 +134,7 @@ const Collaborate = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

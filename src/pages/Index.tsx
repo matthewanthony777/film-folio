@@ -2,13 +2,14 @@ import Navigation from "@/components/Navigation";
 import { Youtube, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TikTokIcon from "@/components/icons/TikTokIcon";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <main className="relative h-screen">
-        <div className="relative h-full">
+      <main className="relative flex-1">
+        <div className="relative h-screen">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute inset-0 bg-black/40 z-10"></div>
             <video 
@@ -18,7 +19,7 @@ const Index = () => {
               muted 
               playsInline
             >
-              <source src="/chris-nolan-edit.mp4" type="video/mp4" />
+              <source src="/lighthouse-edit-rb.MP4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
@@ -69,6 +70,7 @@ const Index = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

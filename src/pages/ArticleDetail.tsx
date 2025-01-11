@@ -6,6 +6,7 @@ import { Calendar, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import MDXRenderer from "@/components/MDXRenderer";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const ArticleDetail = () => {
   const { slug } = useParams();
@@ -13,9 +14,9 @@ const ArticleDetail = () => {
 
   if (!article) {
     return (
-      <>
+      <div className="min-h-screen bg-background flex flex-col">
         <Navigation />
-        <div className="container mx-auto px-4 py-8 text-center">
+        <div className="container mx-auto px-4 py-8 flex-1 text-center">
           <h1 className="text-2xl font-bold">Article not found</h1>
           <Link to="/articles">
             <Button className="mt-4">
@@ -24,7 +25,8 @@ const ArticleDetail = () => {
             </Button>
           </Link>
         </div>
-      </>
+        <Footer />
+      </div>
     );
   }
 
@@ -39,9 +41,9 @@ const ArticleDetail = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <article className="container mx-auto px-4 py-4 md:py-8 max-w-3xl mt-16">
+      <article className="container mx-auto px-4 py-4 md:py-8 max-w-3xl mt-16 flex-1">
         <Link to="/articles">
           <Button variant="ghost" className="mb-4 md:mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -96,7 +98,8 @@ const ArticleDetail = () => {
           </div>
         </div>
       </article>
-    </>
+      <Footer />
+    </div>
   );
 };
 
