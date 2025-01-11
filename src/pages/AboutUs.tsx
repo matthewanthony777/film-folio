@@ -6,7 +6,7 @@ const AboutUs = () => {
       <Navigation />
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto prose dark:prose-invert">
-          <h1 className="text-4xl font-bold mb-6 font-playfair">Screen Scholar</h1>
+          <h1 className="text-4xl font-bold mb-6 font-playfair mt-16">Screen Scholar</h1>
           <p className="text-lg mb-6 leading-relaxed">
             Screen Scholar is dedicated to exploring the depths of cinematic artistry, offering thoughtful analysis and insightful perspectives on films that shape our cultural landscape. Through our carefully curated content, we invite you to journey with us into the heart of storytelling through motion pictures.
           </p>

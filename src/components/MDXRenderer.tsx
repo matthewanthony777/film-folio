@@ -26,7 +26,6 @@ const components = {
     <li className={cn("ml-4", className)} {...props} />
   ),
   img: ({ src, alt, className, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
-    // Check if the src is an external URL
     const isExternalUrl = src?.startsWith('http') || src?.startsWith('https');
     const imageSrc = isExternalUrl ? src : src?.startsWith('/') ? src : `/${src}`;
     
@@ -39,6 +38,27 @@ const components = {
       />
     );
   },
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cn(
+        "relative rounded bg-zinc-100 dark:bg-zinc-800 px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        "before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:bg-primary-500",
+        "text-[#9b87f5] dark:text-[#D6BCFA]",
+        className
+      )}
+      {...props}
+    />
+  ),
+  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
+    <pre
+      className={cn(
+        "mt-4 mb-4 overflow-x-auto rounded-lg bg-zinc-100 dark:bg-zinc-800 p-4",
+        "border border-zinc-200 dark:border-zinc-700",
+        className
+      )}
+      {...props}
+    />
+  ),
   YouTube: YouTubeEmbed,
 };
 
