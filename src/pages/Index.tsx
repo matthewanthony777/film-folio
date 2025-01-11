@@ -18,7 +18,7 @@ const Index = () => {
               muted 
               playsInline
             >
-              <source src="/chris-nolan-edit.mp4" type="video/mp4" />
+              <source src="/lighthouse-edit-rb.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
