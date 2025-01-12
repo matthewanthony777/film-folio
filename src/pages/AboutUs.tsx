@@ -15,6 +15,7 @@ const AboutUs = () => {
               loop 
               muted 
               playsInline
+              preload="auto"
             >
               <source src="/cinema-about-edit.mp4" type="video/mp4" />
               Your browser does not support the video tag.
