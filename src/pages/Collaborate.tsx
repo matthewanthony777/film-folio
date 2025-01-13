@@ -46,9 +46,9 @@ const Collaborate = () => {
       <main className="container mx-auto px-4 py-8 flex-1">
         <div className="max-w-2xl mx-auto space-y-8 mt-16">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold">Let's Collaborate</h1>
+            <h1 className="text-4xl font-bold">Join Our Film Community</h1>
             <p className="text-lg text-muted-foreground">
-              Interested in contributing to the blog or working together? We'd love to hear from you!
+              Whether you're dreaming of a career in film, looking to develop your creative voice, or seeking to connect with fellow film enthusiasts - you've found your home.
             </p>
           </div>
 
