@@ -17,10 +17,11 @@ const Collaborate = () => {
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const vision = formData.get('vision') as string;
+    const support = formData.get('support') as string;
 
     try {
       const { data, error } = await supabase.functions.invoke('send-email', {
-        body: { name, email, vision }
+        body: { name, email, vision, support }
       });
 
       if (error) throw error;
@@ -116,13 +117,26 @@ const Collaborate = () => {
 
               <div className="space-y-2">
                 <label htmlFor="vision" className="text-sm font-medium">
-                  Your Vision
+                  Tell Us About Your Journey
                 </label>
                 <Textarea
                   id="vision"
                   name="vision"
                   required
-                  placeholder="Share your ideas and vision with us..."
+                  placeholder="Share your ideas and journey with us..."
+                  className="min-h-[120px]"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="support" className="text-sm font-medium">
+                  What kind of support are you looking for?
+                </label>
+                <Textarea
+                  id="support"
+                  name="support"
+                  required
+                  placeholder="Tell us about your goals and how we can help..."
                   className="min-h-[120px]"
                 />
               </div>
