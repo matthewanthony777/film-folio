@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import Footer from "@/components/Footer";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Briefcase, Pen, Users } from "lucide-react";
 
 const Collaborate = () => {
   const { toast } = useToast();
@@ -45,12 +47,59 @@ const Collaborate = () => {
     <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
       <main className="container mx-auto px-4 py-8 flex-1">
-        <div className="max-w-2xl mx-auto space-y-8 mt-16">
+        <div className="max-w-4xl mx-auto space-y-12 mt-16">
           <div className="text-center space-y-4">
             <h1 className="text-4xl font-bold">Join Our Film Community</h1>
-            <p className="text-lg text-muted-foreground">
-              Whether you're dreaming of a career in film, looking to develop your creative voice, or seeking to connect with fellow film enthusiasts - you've found your home.
-            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Career Transition Card */}
+            <Card className="bg-card">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Briefcase className="w-6 h-6 text-blue-500" />
+                  Career Transition
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p>One-on-one career guidance</p>
+                <p>Industry insights and pathways</p>
+                <p>Skills assessment and planning</p>
+                <p>Portfolio development support</p>
+              </CardContent>
+            </Card>
+
+            {/* Creative Development Card */}
+            <Card className="bg-card">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Pen className="w-6 h-6 text-blue-500" />
+                  Creative Development
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p>Writing workshops and feedback</p>
+                <p>Script analysis sessions</p>
+                <p>Creative collaboration opportunities</p>
+                <p>Mentorship programs</p>
+              </CardContent>
+            </Card>
+
+            {/* Community Support Card */}
+            <Card className="bg-card">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="w-6 h-6 text-blue-500" />
+                  Community Support
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p>Monthly virtual meetups</p>
+                <p>Peer review groups</p>
+                <p>Networking events</p>
+                <p>Collaborative projects</p>
+              </CardContent>
+            </Card>
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 border rounded-lg bg-card space-y-4">
