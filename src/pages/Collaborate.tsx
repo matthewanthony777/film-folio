@@ -128,7 +128,7 @@ const Collaborate = () => {
               </div>
 
               <Button type="submit" className="w-full">
-                Share your Vision
+                Join Our Community
               </Button>
             </form>
           </div>
