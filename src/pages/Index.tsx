@@ -34,7 +34,7 @@ const Index = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hover:text-red-500 bg-black/20 hover:bg-black/30"
+                className="text-white hover:text-red-500 bg-black/20 hover:bg-black/30"
                 asChild
               >
                 <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel">
@@ -44,7 +44,7 @@ const Index = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hover:text-pink-500 bg-black/20 hover:bg-black/30"
+                className="text-white hover:text-pink-500 bg-black/20 hover:bg-black/30"
                 asChild
               >
                 <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
@@ -54,7 +54,7 @@ const Index = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hover:text-white bg-black/20 hover:bg-black/30"
+                className="text-white hover:text-white bg-black/20 hover:bg-black/30"
                 asChild
               >
                 <a 
