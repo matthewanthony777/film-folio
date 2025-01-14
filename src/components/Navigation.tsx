@@ -1,5 +1,5 @@
 import { FileText, Users, Info, Menu, Home } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import {
   NavigationMenu,
@@ -16,6 +16,10 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  // Check if we're on the home or about page
+  const isHomeOrAbout = location.pathname === "/" || location.pathname === "/about";
 
   const menuItems = [
     { to: "/", label: "Home", icon: Home },
@@ -30,7 +34,7 @@ const Navigation = () => {
         className={`${navigationMenuTriggerStyle()} 
           bg-transparent
           dark:text-white
-          text-zinc-900
+          ${isHomeOrAbout ? 'text-white' : 'text-zinc-900'}
           hover:bg-white/10
           border-none
           shadow-none
@@ -71,7 +75,9 @@ const Navigation = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="relative transition-transform duration-300 hover:scale-110 active:scale-95 dark:text-white text-zinc-900 hover:bg-white/10"
+              className={`relative transition-transform duration-300 hover:scale-110 active:scale-95 
+                ${isHomeOrAbout ? 'text-white' : 'dark:text-white text-zinc-900'} 
+                hover:bg-white/10`}
             >
               <Menu className="h-5 w-5 transition-opacity duration-200 ease-in-out" />
               <span className="sr-only">Toggle menu</span>
@@ -87,7 +93,9 @@ const Navigation = () => {
                   key={item.to}
                   to={item.to}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center px-4 py-2 text-lg dark:text-white/80 text-zinc-900 transition-all duration-300 hover:bg-white/10 group rounded-lg font-playfair"
+                  className={`flex items-center px-4 py-2 text-lg 
+                    ${isHomeOrAbout ? 'text-white' : 'dark:text-white/80 text-zinc-900'}
+                    transition-all duration-300 hover:bg-white/10 group rounded-lg font-playfair`}
                 >
                   {item.icon && (
                     <item.icon className="mr-4 h-5 w-5 opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110" />
@@ -103,7 +111,8 @@ const Navigation = () => {
         <div className="md:hidden">
           <Link 
             to="/" 
-            className="text-lg font-semibold dark:text-white text-zinc-900 transition-colors duration-300 hover:text-zinc-800 dark:hover:text-white/80 font-playfair"
+            className={`text-lg font-semibold transition-colors duration-300 hover:text-white/80 font-playfair
+              ${isHomeOrAbout ? 'text-white' : 'dark:text-white text-zinc-900'}`}
           >
             Screen Scholar
           </Link>
