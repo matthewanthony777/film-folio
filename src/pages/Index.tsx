@@ -18,6 +18,7 @@ const Index = () => {
               loop 
               muted 
               playsInline
+              preload="auto"
             >
               <source src="/cinema-edit-homepage.mp4" type="video/mp4" />
               Your browser does not support the video tag.
