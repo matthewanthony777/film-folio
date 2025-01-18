@@ -7,8 +7,8 @@ import { mdxDataPlugin } from "./src/plugins/mdx-loader";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    host: "::",
     port: 8080,
+    host: true, // This will allow proper network access
   },
   plugins: [
     react(),
