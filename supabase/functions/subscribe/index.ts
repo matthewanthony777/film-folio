@@ -40,7 +40,7 @@ serve(async (req) => {
     console.log('Resend API key retrieved successfully');
 
     const { data, error } = await resend.emails.send({
-      from: 'initi82create@gmail.com',
+      from: 'The Screen Scholar <onboarding@resend.dev>',
       to: [email],
       subject: 'Welcome to The Screen Scholar Newsletter',
       html: `
