@@ -1,11 +1,17 @@
 
 import { Resend } from 'resend';
+import express from 'express';
+import cors from 'cors';
+
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(request: Request) {
+app.post('/', async (req, res) => {
   try {
-    const { email } = await request.json();
+    const { email } = req.body;
 
     const { data, error } = await resend.emails.send({
       from: 'Movie Blog <onboarding@resend.dev>',
@@ -15,26 +21,13 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      return new Response(JSON.stringify({ error }), {
-        status: 400,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      return res.status(400).json({ error });
     }
 
-    return new Response(JSON.stringify({ data }), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    return res.status(200).json({ data });
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Failed to subscribe' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    return res.status(500).json({ error: 'Failed to subscribe' });
   }
-}
+});
+
+export default app;
