@@ -1,10 +1,51 @@
+
 import Navigation from "@/components/Navigation";
 import { Youtube, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TikTokIcon from "@/components/icons/TikTokIcon";
 import Footer from "@/components/Footer";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Subscription failed');
+      }
+
+      toast({
+        title: "Success!",
+        description: "You've been subscribed to our newsletter.",
+      });
+      setEmail("");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to subscribe. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
@@ -68,6 +109,29 @@ const Index = () => {
                 </a>
               </Button>
             </div>
+          </div>
+        </div>
+
+        {/* Newsletter Section */}
+        <div className="bg-background py-16 px-4">
+          <div className="max-w-md mx-auto text-center">
+            <h2 className="text-2xl font-bold mb-4 font-playfair">Subscribe to Our Newsletter</h2>
+            <p className="text-muted-foreground mb-6">
+              Stay updated with the latest in cinema and filmmaking.
+            </p>
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1"
+              />
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? "Subscribing..." : "Subscribe"}
+              </Button>
+            </form>
           </div>
         </div>
       </main>
