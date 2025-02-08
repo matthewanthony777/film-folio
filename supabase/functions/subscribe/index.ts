@@ -28,7 +28,7 @@ serve(async (req) => {
     // Log the attempt to help with debugging
     console.log('Attempting to send email to:', email);
     
-    const apiKey = Deno.env.get('RESEND_AUDIENCE_API_KEY');
+    const apiKey = Deno.env.get('RESEND_API_KEY');
     if (!apiKey) {
       console.error('No Resend API key found');
       throw new Error('Resend API key not configured');
