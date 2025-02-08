@@ -1,3 +1,4 @@
+
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
@@ -23,7 +24,7 @@ const handler = async (req: Request): Promise<Response> => {
     const { name, email, vision }: EmailRequest = await req.json();
 
     // In development/testing, we can only send to the verified email
-    const toEmail = "initi82create@gmail.com"; // The verified email address
+    const toEmail = "theinverseinnovator@gmail.com"; // The verified email address
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -32,7 +33,7 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Movie Blog <onboarding@resend.dev>", // Using Resend's testing domain
+        from: "theinverseinnovator@resend.dev",
         to: [toEmail],
         subject: `New Vision Shared by ${name}`,
         html: `
