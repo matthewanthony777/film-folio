@@ -40,7 +40,7 @@ serve(async (req) => {
     const toEmail = "theinverseinnovator@gmail.com"; // The verified email address
 
     const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'theinverseinnovator@resend.dev',
       to: [toEmail],
       subject: 'Welcome to The Screen Scholar Newsletter',
       html: `
