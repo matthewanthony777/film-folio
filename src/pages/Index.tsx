@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/Navigation";
 import { Youtube, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [email, setEmail] = useState("");
@@ -18,17 +18,11 @@ const Index = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
+      const { data, error } = await supabase.functions.invoke('subscribe', {
+        body: { email }
       });
 
-      if (!response.ok) {
-        throw new Error('Subscription failed');
-      }
+      if (error) throw error;
 
       toast({
         title: "Success!",
@@ -36,6 +30,7 @@ const Index = () => {
       });
       setEmail("");
     } catch (error) {
+      console.error('Subscription error:', error);
       toast({
         title: "Error",
         description: "Failed to subscribe. Please try again.",
