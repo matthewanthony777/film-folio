@@ -18,7 +18,7 @@ const Index = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://lovable-movie-blog.supabase.co/functions/v1/subscribe', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
