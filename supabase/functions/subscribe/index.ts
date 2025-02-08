@@ -36,17 +36,18 @@ serve(async (req) => {
     
     const resend = new Resend(apiKey);
     
-    // Log that we got the API key (without revealing it)
-    console.log('Resend API key retrieved successfully');
+    // In development, we can only send to the verified email
+    const toEmail = "theinverseinnovator@gmail.com"; // The verified email address
 
     const { data, error } = await resend.emails.send({
-      from: 'The Screen Scholar <onboarding@resend.dev>',
-      to: [email],
+      from: 'onboarding@resend.dev',
+      to: [toEmail],
       subject: 'Welcome to The Screen Scholar Newsletter',
       html: `
         <h1>Welcome to The Screen Scholar Newsletter!</h1>
         <p>Thank you for subscribing to our newsletter. We're excited to share our cinematic journey with you.</p>
         <p>Stay tuned for exclusive content, insights, and updates about the world of cinema.</p>
+        <p><small>Note: This is a development test. The subscription request came from: ${email}</small></p>
       `,
     });
 
@@ -62,7 +63,10 @@ serve(async (req) => {
     }
 
     return new Response(
-      JSON.stringify({ data }),
+      JSON.stringify({ 
+        data,
+        message: "Subscription successful! During development, confirmation emails are sent to the verified email address."
+      }),
       { 
         status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
