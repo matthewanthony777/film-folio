@@ -19,10 +19,10 @@ serve(async (req) => {
     // Log the attempt to help with debugging
     console.log('Attempting to send email to:', email);
     
-    const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
+    const resend = new Resend(Deno.env.get('RESEND_AUDIENCE_API_KEY'));
     
     // Log that we got the API key (without revealing it)
-    console.log('Resend API key retrieved:', !!Deno.env.get('RESEND_API_KEY'));
+    console.log('Resend API key retrieved:', !!Deno.env.get('RESEND_AUDIENCE_API_KEY'));
 
     const { data, error } = await resend.emails.send({
       from: 'The Screen Scholar <onboarding@resend.dev>',
