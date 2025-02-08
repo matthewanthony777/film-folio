@@ -1,15 +1,15 @@
 
 import { Resend } from 'resend';
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
 import cors from 'cors';
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const router = Router();
+router.use(cors());
+router.use(express.json());
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-app.post('/', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
 
@@ -30,4 +30,4 @@ app.post('/', async (req: Request, res: Response) => {
   }
 });
 
-export default app;
+export default router;
