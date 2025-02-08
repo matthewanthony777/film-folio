@@ -13,6 +13,18 @@ router.post('/', async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
 
+    if (!email) {
+      console.error('No email provided in request body');
+      return res.status(400).json({ error: 'Email is required' });
+    }
+
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not configured');
+      return res.status(500).json({ error: 'Email service not configured' });
+    }
+
+    console.log('Attempting to send email to:', email);
+
     const { data, error } = await resend.emails.send({
       from: 'Movie Blog <onboarding@resend.dev>',
       to: [email],
@@ -21,12 +33,15 @@ router.post('/', async (req: Request, res: Response) => {
     });
 
     if (error) {
+      console.error('Resend API error:', error);
       return res.status(400).json({ error });
     }
 
+    console.log('Email sent successfully:', data);
     return res.status(200).json({ data });
   } catch (error) {
-    return res.status(500).json({ error: 'Failed to subscribe' });
+    console.error('Server error:', error);
+    return res.status(500).json({ error: 'Failed to subscribe', details: error.message });
   }
 });
 
