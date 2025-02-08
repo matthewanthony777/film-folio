@@ -1,6 +1,6 @@
 
 import { Resend } from 'resend';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 
 const app = express();
@@ -9,7 +9,7 @@ app.use(express.json());
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-app.post('/', async (req, res) => {
+app.post('/', async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
 
