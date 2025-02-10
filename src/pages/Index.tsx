@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/Navigation";
 import { Youtube, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -61,9 +62,34 @@ const Index = () => {
             </video>
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center font-playfair">The Art of Cinema</h1>
-              <p className="text-lg md:text-2xl text-center px-4 font-playfair italic">
+              <p className="text-lg md:text-2xl text-center px-4 font-playfair italic mb-12">
                 Discover the heartbeat behind every masterpiece, where cinematic dreams take flight
               </p>
+              
+              {/* Newsletter Section - Now within the video overlay */}
+              <div className="max-w-md mx-auto text-center mt-8">
+                <h2 className="text-2xl font-bold mb-4 font-playfair">Subscribe to Our Newsletter</h2>
+                <p className="text-white/80 mb-6">
+                  Stay updated with the latest in cinema and filmmaking.
+                </p>
+                <form onSubmit={handleSubscribe} className="flex gap-2">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                  />
+                  <Button 
+                    type="submit" 
+                    disabled={isLoading}
+                    className="bg-white text-black hover:bg-white/90"
+                  >
+                    {isLoading ? "Subscribing..." : "Subscribe"}
+                  </Button>
+                </form>
+              </div>
             </div>
           </div>
           <div className="absolute bottom-8 left-0 right-0 z-30">
@@ -104,29 +130,6 @@ const Index = () => {
                 </a>
               </Button>
             </div>
-          </div>
-        </div>
-
-        {/* Newsletter Section */}
-        <div className="bg-background py-16 px-4">
-          <div className="max-w-md mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-4 font-playfair">Subscribe to Our Newsletter</h2>
-            <p className="text-muted-foreground mb-6">
-              Stay updated with the latest in cinema and filmmaking.
-            </p>
-            <form onSubmit={handleSubscribe} className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="flex-1"
-              />
-              <Button type="submit" disabled={isLoading}>
-                {isLoading ? "Subscribing..." : "Subscribe"}
-              </Button>
-            </form>
           </div>
         </div>
       </main>
