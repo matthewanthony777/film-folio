@@ -14,21 +14,19 @@ const Index = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      const handleCanPlay = () => {
+      const handleLoaded = () => {
         setVideoLoaded(true);
       };
 
-      const handleError = (e: any) => {
-        console.error('Video loading error:', e);
-        setVideoLoaded(false);
-      };
+      // Set loaded state to true if video is already loaded
+      if (video.readyState >= 3) {
+        setVideoLoaded(true);
+      }
 
-      video.addEventListener('canplay', handleCanPlay);
-      video.addEventListener('error', handleError);
+      video.addEventListener('loadeddata', handleLoaded);
 
       return () => {
-        video.removeEventListener('canplay', handleCanPlay);
-        video.removeEventListener('error', handleError);
+        video.removeEventListener('loadeddata', handleLoaded);
       };
     }
   }, []);
@@ -54,7 +52,6 @@ const Index = () => {
               muted 
               playsInline
               preload="auto"
-              poster="/placeholder.svg"
             >
               <source src="/cinema-edit-homepage.mp4" type="video/mp4" />
               Your browser does not support the video tag.
