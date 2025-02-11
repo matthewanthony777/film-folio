@@ -37,6 +37,7 @@ const Index = () => {
     <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
       <main className="relative flex-1">
+        {/* Video Section */}
         <div className="relative h-screen">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute inset-0 bg-black/40 z-10"></div>
@@ -63,8 +64,6 @@ const Index = () => {
               <p className="text-lg md:text-2xl text-center px-4 font-playfair italic mb-12">
                 Discover the heartbeat behind every masterpiece, where cinematic dreams take flight
               </p>
-              
-              <NewsletterForm />
             </div>
           </div>
           <div className="absolute bottom-8 left-0 right-0 z-30">
@@ -106,6 +105,11 @@ const Index = () => {
               </Button>
             </div>
           </div>
+        </div>
+
+        {/* Newsletter Section - Now below the video */}
+        <div className="bg-black text-white py-16">
+          <NewsletterForm />
         </div>
       </main>
       <Footer />
