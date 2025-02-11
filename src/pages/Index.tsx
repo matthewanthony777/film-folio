@@ -19,8 +19,12 @@ const Index = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
+      // Preload the video
+      video.load();
+      
       const handleCanPlay = () => {
         setVideoLoaded(true);
+        // Start playing immediately when enough data is available
         video.play().catch(error => {
           console.error('Video playback failed:', error);
         });
@@ -31,23 +35,23 @@ const Index = () => {
         setVideoLoaded(false);
       };
 
+      // Add event listeners
+      video.addEventListener('loadeddata', handleCanPlay);
       video.addEventListener('canplay', handleCanPlay);
       video.addEventListener('error', handleError);
 
-      // Force reload the video if it hasn't loaded within 5 seconds
-      const timeoutId = setTimeout(() => {
-        if (!videoLoaded && video) {
-          video.load();
-        }
-      }, 5000);
+      // Start loading immediately
+      if (video.readyState >= 3) {
+        handleCanPlay();
+      }
 
       return () => {
+        video.removeEventListener('loadeddata', handleCanPlay);
         video.removeEventListener('canplay', handleCanPlay);
         video.removeEventListener('error', handleError);
-        clearTimeout(timeoutId);
       };
     }
-  }, [videoLoaded]);
+  }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,6 +101,7 @@ const Index = () => {
               muted 
               playsInline
               preload="auto"
+              poster="/placeholder.svg"
             >
               <source src="/cinema-edit-homepage.mp4" type="video/mp4" />
               Your browser does not support the video tag.
