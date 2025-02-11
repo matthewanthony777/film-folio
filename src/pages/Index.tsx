@@ -5,14 +5,49 @@ import { Button } from "@/components/ui/button";
 import TikTokIcon from "@/components/icons/TikTokIcon";
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const handleCanPlay = () => {
+        setVideoLoaded(true);
+        video.play().catch(error => {
+          console.error('Video playback failed:', error);
+        });
+      };
+
+      const handleError = (e: any) => {
+        console.error('Video loading error:', e);
+        setVideoLoaded(false);
+      };
+
+      video.addEventListener('canplay', handleCanPlay);
+      video.addEventListener('error', handleError);
+
+      // Force reload the video if it hasn't loaded within 5 seconds
+      const timeoutId = setTimeout(() => {
+        if (!videoLoaded && video) {
+          video.load();
+        }
+      }, 5000);
+
+      return () => {
+        video.removeEventListener('canplay', handleCanPlay);
+        video.removeEventListener('error', handleError);
+        clearTimeout(timeoutId);
+      };
+    }
+  }, [videoLoaded]);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,8 +84,14 @@ const Index = () => {
         <div className="relative h-screen">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute inset-0 bg-black/40 z-10"></div>
+            {!videoLoaded && (
+              <div className="absolute inset-0 bg-black z-5 flex items-center justify-center">
+                <div className="text-white text-xl">Loading...</div>
+              </div>
+            )}
             <video 
-              className="w-full h-full object-cover md:object-cover object-center sm:object-[50%_50%]"
+              ref={videoRef}
+              className={`w-full h-full object-cover md:object-cover object-center sm:object-[50%_50%] ${!videoLoaded ? 'opacity-0' : 'opacity-100'}`}
               autoPlay 
               loop 
               muted 
@@ -66,7 +107,7 @@ const Index = () => {
                 Discover the heartbeat behind every masterpiece, where cinematic dreams take flight
               </p>
               
-              {/* Newsletter Section - Now within the video overlay */}
+              {/* Newsletter Section */}
               <div className="max-w-md mx-auto text-center mt-8">
                 <h2 className="text-2xl font-bold mb-4 font-playfair">Subscribe to Our Newsletter</h2>
                 <p className="text-white/80 mb-6">
