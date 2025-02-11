@@ -1,3 +1,4 @@
+
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
@@ -73,7 +74,7 @@ const Collaborate = () => {
             </Card>
 
             {/* Creative Development Card */}
-            <Card className="bg-card animate-[fade-in_0.6s_ease-out,scale-in_0.4s_ease-out] hover:scale-105 transition-transform duration-300 delay-[150ms]">
+            <Card className="bg-card animate-[fade-in_0.6s_ease-out,scale-in_0.4s_ease-out] hover:scale-105 transition-transform duration-300 delay-150">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Pen className="w-6 h-6 text-blue-500" />
@@ -89,7 +90,7 @@ const Collaborate = () => {
             </Card>
 
             {/* Community Support Card */}
-            <Card className="bg-card animate-[fade-in_0.6s_ease-out,scale-in_0.4s_ease-out] hover:scale-105 transition-transform duration-300 delay-[300ms]">
+            <Card className="bg-card animate-[fade-in_0.6s_ease-out,scale-in_0.4s_ease-out] hover:scale-105 transition-transform duration-300 delay-300">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Users className="w-6 h-6 text-blue-500" />
