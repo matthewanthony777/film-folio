@@ -45,31 +45,27 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <main className="relative flex-1">
-        <div className="relative h-screen">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0 bg-black/40 z-10"></div>
+      <main className="flex-1">
+        <section className="relative h-screen">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-black/40 z-10" />
             <video 
-              className="w-full h-full object-cover"
               autoPlay 
-              loop 
               muted 
+              loop 
               playsInline
-              preload="metadata"
-              poster="/placeholder.svg"
-              style={{ objectPosition: "center center" }}
+              className="w-full h-full object-cover"
             >
-              <source 
-                src="/cinema-edit-homepage.mp4" 
-                type="video/mp4"
-              />
+              <source src="/cinema-edit-homepage.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center font-playfair">The Art of Cinema</h1>
-              <p className="text-lg md:text-2xl text-center px-4 font-playfair italic">
-                Discover the heartbeat behind every masterpiece, where cinematic dreams take flight
-              </p>
-            </div>
+          </div>
+          <div className="relative z-20 h-full flex flex-col items-center justify-center text-white px-4">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center font-playfair">
+              The Art of Cinema
+            </h1>
+            <p className="text-lg md:text-2xl text-center max-w-3xl font-playfair italic">
+              Discover the heartbeat behind every masterpiece, where cinematic dreams take flight
+            </p>
           </div>
           <div className="absolute bottom-8 left-0 right-0 z-30">
             <div className="flex justify-center gap-4">
@@ -110,10 +106,10 @@ const Index = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Newsletter Section */}
-        <div className="bg-black py-16 px-4">
+        <section className="bg-black py-16 px-4">
           <div className="max-w-md mx-auto text-center">
             <h2 className="text-2xl font-bold mb-4 font-playfair text-white">Subscribe to Our Newsletter</h2>
             <p className="text-muted-foreground mb-6 text-white">
@@ -133,7 +129,7 @@ const Index = () => {
               </Button>
             </form>
           </div>
-        </div>
+        </section>
       </main>
       <Footer />
     </div>
