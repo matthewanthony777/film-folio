@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/Navigation";
 import { Youtube, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -49,15 +50,19 @@ const Index = () => {
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute inset-0 bg-black/40 z-10"></div>
             <video 
-              className="w-full h-full object-cover md:object-cover object-center sm:object-[50%_50%]"
+              className="w-full h-full object-cover"
               autoPlay 
               loop 
               muted 
               playsInline
-              preload="auto"
+              preload="metadata"
+              poster="/placeholder.svg"
+              style={{ objectPosition: "center center" }}
             >
-              <source src="/cinema-edit-homepage.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
+              <source 
+                src="/cinema-edit-homepage.mp4" 
+                type="video/mp4"
+              />
             </video>
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center font-playfair">The Art of Cinema</h1>
@@ -108,10 +113,10 @@ const Index = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className="bg-background py-16 px-4">
+        <div className="bg-black py-16 px-4">
           <div className="max-w-md mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-4 font-playfair">Subscribe to Our Newsletter</h2>
-            <p className="text-muted-foreground mb-6">
+            <h2 className="text-2xl font-bold mb-4 font-playfair text-white">Subscribe to Our Newsletter</h2>
+            <p className="text-muted-foreground mb-6 text-white">
               Stay updated with the latest in cinema and filmmaking.
             </p>
             <form onSubmit={handleSubscribe} className="flex gap-2">
