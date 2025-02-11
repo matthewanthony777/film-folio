@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import TikTokIcon from "@/components/icons/TikTokIcon";
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -13,6 +13,28 @@ const Index = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const video = document.querySelector('video');
+    if (video) {
+      video.addEventListener('loadeddata', () => {
+        setIsVideoLoaded(true);
+      });
+      
+      // Force reload the video if it hasn't loaded within 2 seconds
+      const timeout = setTimeout(() => {
+        if (!isVideoLoaded && video) {
+          video.load();
+        }
+      }, 2000);
+
+      return () => {
+        clearTimeout(timeout);
+        video.removeEventListener('loadeddata', () => setIsVideoLoaded(true));
+      };
+    }
+  }, [isVideoLoaded]);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,13 +72,20 @@ const Index = () => {
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-black/40 z-10" />
             <video 
+              key="homepage-video"
               autoPlay 
               muted 
               loop 
               playsInline
               className="w-full h-full object-cover"
+              controls={false}
+              webkit-playsinline="true"
             >
-              <source src="/cinema-edit-homepage.mp4" type="video/mp4" />
+              <source 
+                src="/cinema-edit-homepage.mp4#t=0.1" 
+                type="video/mp4" 
+              />
+              Your browser does not support the video tag.
             </video>
           </div>
           <div className="relative z-20 h-full flex flex-col items-center justify-center text-white px-4">
